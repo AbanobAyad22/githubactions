@@ -25,6 +25,10 @@ jobs:
          runs-on: ubuntu-latest
          
          steps: 
+            - name: pwd
+              run: pwd
+              
+              
             - name: print hello 
               run: echo "welcome to your first workflow"
 
