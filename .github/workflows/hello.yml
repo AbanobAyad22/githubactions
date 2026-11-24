@@ -6,6 +6,14 @@ on:
     #     types:
     #         - opened
     workflow_dispatch:
+        inputs:
+            environment:
+                description: "choose an environment"
+                required: true
+                type: choice
+                options:
+                    - dev
+                    - test
 
 jobs: 
     print-hello:
