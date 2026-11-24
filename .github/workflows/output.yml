@@ -27,7 +27,8 @@ jobs:
 
 
     env2:
-         runs-on: ubuntu-latest         
+         runs-on: ubuntu-latest      
+         needs: env1
          steps: 
             - name: access my docker   
               run: | 
