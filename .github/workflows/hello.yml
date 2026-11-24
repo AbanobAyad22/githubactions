@@ -1,10 +1,10 @@
 on: 
-    push:
-        branches:
-            - main
-    # issues:
-    #     types:
-    #         - opened
+    # push:
+    #     branches:
+    #         - main
+    issues:
+        types:
+            - opened
 
 
 jobs: 
