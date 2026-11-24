@@ -1,4 +1,4 @@
-name: Bug Report
+name: add user
 description: File a bug report to help us improve
 title: "[user name]: "
 labels: ["bug", "triage"]
