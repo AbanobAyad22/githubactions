@@ -23,6 +23,9 @@ jobs:
             - name: print hello 
               run: echo "welcome to your first workflow"
 
+            - name: print env 
+              run: echo "{{ inputs.environment }}"              
+
 
     print-welcome:
             runs-on: ubuntu-latest
