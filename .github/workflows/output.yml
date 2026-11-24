@@ -6,6 +6,8 @@ on:
 jobs: 
     env1:
          runs-on: ubuntu-latest   
+         outputs:
+             status: ${{ steps.show-version.outputs.status }}
          steps: 
             - name: our version
               id: show-version    
