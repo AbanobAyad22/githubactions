@@ -30,4 +30,5 @@ jobs:
          runs-on: ubuntu-latest         
          steps: 
             - name: access my docker   
-              run: |
+              run: | 
+                echo "${{ needs.env1.outputs.status }}"
