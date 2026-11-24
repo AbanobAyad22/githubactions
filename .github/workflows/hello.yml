@@ -22,3 +22,11 @@ jobs:
             steps: 
                 - name: print hi 
                   run: echo "hi"              
+
+
+    print-hi:
+            runs-on: ubuntu-latest
+            needs: print-hello
+            steps: 
+                - name: print hi 
+                  run: echo "welcome"                                
