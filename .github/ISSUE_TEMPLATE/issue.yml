@@ -1,6 +1,6 @@
 name: Bug Report
 description: File a bug report to help us improve
-title: "[Bug]: "
+title: "[user name]: "
 labels: ["bug", "triage"]
 body:
   - type: markdown
@@ -12,23 +12,6 @@ body:
     attributes:
       label: What happened?
       description: Tell us what you expected to happen and what actually occurred.
-      placeholder: Describe the bug...
+      placeholder: what usser you want to add in the Role
     validations:
       required: true
-  - type: dropdown
-    id: os
-    attributes:
-      label: Operating System
-      options:
-        - Linux
-        - macOS
-        - Windows
-    validations:
-      required: true
-  - type: checkboxes
-    id: terms
-    attributes:
-      label: Checklist
-      options:
-        - label: I have searched existing issues to ensure this is not a duplicate.
-          required: true
