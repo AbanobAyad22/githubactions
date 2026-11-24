@@ -1,10 +1,13 @@
 on: 
-    # push:
-    #     branches:
-    #         - main
-    # issues:
-    #     types:
-    #         - opened
+    push:
+        branches:
+            - main
+        paths:
+            - 'src/'
+
+    issues:
+        types:
+            - opened
     workflow_dispatch:
         inputs:
             environment:
@@ -14,6 +17,8 @@ on:
                 options:
                     - dev
                     - test
+    schedule: 
+        - cron: "* * * * *" 
 
 jobs: 
     print-hello:
