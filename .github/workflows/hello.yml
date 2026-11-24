@@ -24,7 +24,7 @@ jobs:
               run: echo "welcome to your first workflow"
 
             - name: print env 
-              run: echo "{{ inputs.environment }}"              
+              run: echo "${{ inputs.environment }}"              
 
 
     print-welcome:
