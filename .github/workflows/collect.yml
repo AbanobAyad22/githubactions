@@ -14,6 +14,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v6.3.1
+        with:
+          role-to-assume: arn:aws:iam::110844250998:role/GitHubFullAccessRole
+          aws-region: eu-central-1
+          role-session-name: GitHubActionsSession
+
+      - name: Verify AWS access
+        run: |
+          aws sts get-caller-identity      
       - name: Extract role and username
         id: request
         env:
