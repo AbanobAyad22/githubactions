@@ -11,11 +11,6 @@ permissions:
 
 jobs:
   notify-requester:
-    if: >-
-      github.event.issue.author_association == 'OWNER' ||
-      github.event.issue.author_association == 'MEMBER' ||
-      github.event.issue.author_association == 'COLLABORATOR'
-
     runs-on: ubuntu-latest
 
     steps:
@@ -25,12 +20,11 @@ jobs:
           ISSUE_BODY: ${{ github.event.issue.body }}
         shell: bash
         run: |
-          ROLE=$(echo "$ISSUE_BODY" | sed -n '/### Select AWS Role/{n;p;}')
-          EMAIL=$(echo "$ISSUE_BODY" | sed -n '/### Email Address/{n;p;}')
-
+          ROLE=$(echo "$ISSUE_BODY" | sed -n '/### Select AWS Role/{n;n;p;}')
+          EMAIL=$(echo "$ISSUE_BODY" | sed -n '/### Email Address/{n;n;p;}')
+      
           echo "role=$ROLE" >> "$GITHUB_OUTPUT"
           echo "email=$EMAIL" >> "$GITHUB_OUTPUT"
-
+      
           echo "Selected role: $ROLE"
           echo "Requester email: $EMAIL"
-    
