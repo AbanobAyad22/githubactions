@@ -28,3 +28,27 @@ jobs:
       
           echo "Selected role: $ROLE"
           echo "Requester email: $EMAIL"
+
+      - name: Allow IAM user to assume selected role
+        env:
+          IAM_USERNAME: ${{ steps.request.outputs.email }}
+          Role: ${{ steps.request.outputs.role }}
+        shell: bash
+        run: |
+          POLICY_ARN="arn:aws:iam::110844250998:policy/Assume${POLICY_NAME}"
+          set -euo pipefail
+          aws iam attach-user-policy \
+            --user-name "$IAM_USERNAME" \
+            --policy-arn "$POLICY_ARN"
+
+      - name: Summarize grant
+        env:
+          IAM_USERNAME: ${{ steps.request.outputs.username }}
+          ROLE: ${{ steps.request.outputs.role }}
+        run: |
+          {
+            echo "## AWS role access granted"
+            echo ""
+            echo "- IAM user: \`$IAM_USERNAME\`"
+            echo "- Role they can assume: \`$ROLE\`"
+          } >> "$GITHUB_STEP_SUMMARY"          

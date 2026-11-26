@@ -1,5 +1,5 @@
 name: AWS Role Access Request
-description: Request access to an AWS IAM role
+description: Request permission for an IAM user to assume an AWS role
 title: "[AWS Access Request] "
 labels:
   - access-request
@@ -8,13 +8,14 @@ body:
     attributes:
       value: |
         ## AWS Access Request
-        Select the AWS role you need access to.
+        Select the AWS role and provide the AWS IAM username that should be allowed to assume it.
+        Access remains in place until an administrator removes it.
 
   - type: dropdown
     id: aws_role
     attributes:
       label: Select AWS Role
-      description: Which AWS IAM role do you want to assume?
+      description: Which AWS IAM role should the selected IAM user be allowed to assume?
       options:
         - AdminAccess
         - EC2FullAccess
@@ -22,11 +23,11 @@ body:
       required: true
 
   - type: input
-    id: user_email
+    id: iam_username
     attributes:
-      label: Email Address
-      description: Enter your corporate email address.
-      placeholder: name@company.com
+      label: IAM Username
+      description: Enter the exact AWS IAM username to grant access to.
+      placeholder: example-user
     validations:
       required: true
 
@@ -39,14 +40,3 @@ body:
     validations:
       required: true
 
-  - type: dropdown
-    id: duration
-    attributes:
-      label: Access Duration
-      options:
-        - 1 day
-        - 7 days
-        - 30 days
-        - Permanent
-    validations:
-      required: true
