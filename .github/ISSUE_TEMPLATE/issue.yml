@@ -1,17 +1,52 @@
-name: add user
-description: File a bug report to help us improve
-title: "[user name]: "
-labels: ["bug", "triage"]
+name: AWS Role Access Request
+description: Request access to an AWS IAM role
+title: "[AWS Access Request] "
+labels:
+  - access-request
 body:
   - type: markdown
     attributes:
       value: |
-        Thanks for taking the time to fill out this bug report!
-  - type: textarea
-    id: what-happened
+        ## AWS Access Request
+        Select the AWS role you need access to.
+
+  - type: dropdown
+    id: aws_role
     attributes:
-      label: What happened?
-      description: Tell us what you expected to happen and what actually occurred.
-      placeholder: what usser you want to add in the Role
+      label: Select AWS Role
+      description: Which AWS IAM role do you want to assume?
+      options:
+        - AdminAccess
+        - EC2FullAccess
+    validations:
+      required: true
+
+  - type: input
+    id: user_email
+    attributes:
+      label: Email Address
+      description: Enter your corporate email address.
+      placeholder: name@company.com
+    validations:
+      required: true
+
+  - type: textarea
+    id: justification
+    attributes:
+      label: Business Justification
+      description: Explain why you need this access.
+      placeholder: Describe your requirement...
+    validations:
+      required: true
+
+  - type: dropdown
+    id: duration
+    attributes:
+      label: Access Duration
+      options:
+        - 1 day
+        - 7 days
+        - 30 days
+        - Permanent
     validations:
       required: true
