@@ -50,6 +50,7 @@ jobs:
         shell: bash
         run: |
           POLICY_ARN="arn:aws:iam::110844250998:policy/Assume${POLICY_NAME}"
+          echo "policy= $POLICY_ARN"
           set -euo pipefail
           aws iam attach-user-policy \
             --user-name "$IAM_USERNAME" \
