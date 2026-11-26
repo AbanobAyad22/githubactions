@@ -49,7 +49,7 @@ jobs:
           Role: ${{ steps.request.outputs.role }}
         shell: bash
         run: |
-          POLICY_ARN="arn:aws:iam::110844250998:policy/Assume${POLICY_NAME}"
+          POLICY_ARN="arn:aws:iam::110844250998:policy/Assume${Role}"
           echo "policy= $POLICY_ARN"
           set -euo pipefail
           aws iam attach-user-policy \
