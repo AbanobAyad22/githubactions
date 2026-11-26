@@ -14,20 +14,21 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Extract role and email
+      - name: Extract role and username
         id: request
         env:
           ISSUE_BODY: ${{ github.event.issue.body }}
         shell: bash
         run: |
           ROLE=$(echo "$ISSUE_BODY" | sed -n '/### Select AWS Role/{n;n;p;}')
-          EMAIL=$(echo "$ISSUE_BODY" | sed -n '/### Email Address/{n;n;p;}')
+          IAM_USERNAME=$(echo "$ISSUE_BODY" | sed -n '/### IAM Username/{n;n;p;}')
       
           echo "role=$ROLE" >> "$GITHUB_OUTPUT"
-          echo "email=$EMAIL" >> "$GITHUB_OUTPUT"
+          echo "email=$IAM_USERNAME" >> "$GITHUB_OUTPUT"
+          echo "username=$IAM_USERNAME" >> "$GITHUB_OUTPUT"
       
           echo "Selected role: $ROLE"
-          echo "Requester email: $EMAIL"
+          echo "IAM username: $IAM_USERNAME"
 
       - name: Allow IAM user to assume selected role
         env:
